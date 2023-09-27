@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStoreWPFWithDbEf", "BookStoreWPFWithDbEf\BookStoreWPFWithDbEf.csproj", "{EB617C1E-FA62-4038-8D13-102E17413EDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB617C1E-FA62-4038-8D13-102E17413EDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB617C1E-FA62-4038-8D13-102E17413EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB617C1E-FA62-4038-8D13-102E17413EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB617C1E-FA62-4038-8D13-102E17413EDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BCDD1C90-EE93-4A47-A4C3-5D2F445401FC}
+	EndGlobalSection
+EndGlobal
