@@ -7,6 +7,63 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Menu Padding="0 4" Grid.Row="0">
+            <MenuItem  Header="File">
+                <MenuItem Header="Exit" />
+            </MenuItem>
+            <MenuItem Header="Sale" />
+            <MenuItem Header="Receipt" />
+            <MenuItem Header="Reservation" />
+            <MenuItem Header="Promotions" />
+            <MenuItem Header="Settings">
+                <MenuItem Header="Authors" Command="{Binding OpenAuthorsWindowCommand}" />
+                <MenuItem Header="Customers" />
+                <MenuItem Header="Genres" Command="{Binding OpenGenresWindowCommand}" />
+            </MenuItem>
+        </Menu>
+        <TabControl Grid.Row="1">
+            <TabItem Header="Books">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Button Width="120" Height="28" Margin="4 4" Content="Add book" 
+                                    Command="{Binding AddNewBookCommand}"/>
+                            <Button Width="120" Height="28" Margin="4 4" Content="Edit book"
+                                    Command="{Binding EditBookCommand}"/>
+                            <Button Width="120" Height="28" Margin="4 4" Content="Delete book"
+                                    Command="{Binding DeleteBookCommand}"/>
+                            <Button Width="120" Height="28" Margin="4 4" Content="Save"
+                                    Command="{Binding SaveBookCommand}"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <DataGrid Margin="5" AutoGenerateColumns="False" IsReadOnly="True"
+                                  ItemsSource="{Binding Books}" 
+                                  SelectedItem="{Binding SelectedBooks}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" />
+                                <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}" />
+                                <DataGridTextColumn Header="Publisher" Binding="{Binding Path=Publisher}" />
+                                <DataGridTextColumn Header="Pages" Binding="{Binding Path=TotalPages}" />
+                                <DataGridTextColumn Header="Year" Binding="{Binding Path=Year}" />
+                                <DataGridTextColumn Header="CostPrice" Binding="{Binding Path=CostPrice}" />
+                                <DataGridTextColumn Header="SalePrice" Binding="{Binding Path=SalePrice}" />
+                                <DataGridTextColumn Header="Authors" Binding="{Binding Path=Authors.FullName}" />
+                                <DataGridTextColumn Header="SalePrice" Binding="{Binding Path=SalePrice}" />
+                                <DataGridTextColumn Header="New" Binding="{Binding Path=IsNew}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

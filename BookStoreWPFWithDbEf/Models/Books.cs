@@ -11,9 +11,9 @@ namespace BookStoreWPFWithDbEf.Models
     public class Books
     {
         public int Id { get; set; }
-        [StringLength(50)]
+        [StringLength(100)]
         public string Title { get; set; } = null!;
-        [StringLength(50)]
+        [StringLength(100)]
         public string Publisher { get; set; } = null!;
         public int TotalPages { get; set; } = 0;
         public int Year { get; set; } = 0; 

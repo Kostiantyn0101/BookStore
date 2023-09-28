@@ -19,10 +19,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Windows\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Tools\" />
-  </ItemGroup>
-
 </Project>

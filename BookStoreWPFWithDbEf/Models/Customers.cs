@@ -16,11 +16,11 @@ namespace BookStoreWPFWithDbEf.Models
         public string LastName { get; set; } = null!;
         [StringLength(50)]
         public string Email { get; set; } = null!;
-        [StringLength(50)]
+        [StringLength(30)]
         public string PhoneNumber { get; set; } = null!;
-        [StringLength(50)]
+        [StringLength(20)]
         public string Login { get; set; } = null!;
-        [StringLength(50)]
+        [StringLength(20)]
         public string Password { get; set; } = null!;
         public bool IsAdmin { get; set; } = false;
     }

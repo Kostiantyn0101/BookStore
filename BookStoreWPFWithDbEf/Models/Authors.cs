@@ -11,7 +11,7 @@ namespace BookStoreWPFWithDbEf.Models
     public class Authors
     {
         public int Id { get; set; }
-        [StringLength(50)]
+        [StringLength(100)]
         public string FullName { get; set; } = null!;
         public virtual ICollection<Books> Books { get; set; } = null!;
     }
