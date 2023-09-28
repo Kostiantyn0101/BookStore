@@ -16,8 +16,10 @@ namespace BookStoreWPFWithDbEf.Models
         [StringLength(50)]
         public string Publisher { get; set; } = null!;
         public int TotalPages { get; set; } = 0;
-        public int Year { get; set; } = 0;
-        public decimal SalePrice { get; set; } = 0;
+        public int Year { get; set; } = 0; 
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal SalePrice { get; set; } = 0; 
+        [Column(TypeName = "decimal(18,4)")]
         public decimal CostPrice { get; set; } = 0;
         public bool IsNew { get; set; } = false;
         public virtual Authors Authors { get; set; } = null!;
@@ -27,10 +29,10 @@ namespace BookStoreWPFWithDbEf.Models
         public virtual Books ContinuationOfBook { get; set; } = null!;
 
         [InverseProperty(nameof(ReceiptBook.Book))]
-        public virtual ICollection<ReceiptBook> ReceiptGoods { get; set; }
+        public virtual ICollection<ReceiptBook> ReceiptGoods { get; set; } = null!;
         [InverseProperty(nameof(SaleBook.Book))]
-        public virtual ICollection<SaleBook> SaleGoods { get; set; }
+        public virtual ICollection<SaleBook> SaleGoods { get; set; } = null!;
         [InverseProperty(nameof(Reservation.Book))]
-        public virtual ICollection<Reservation> Reservations { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; } = null!;
     }
 }

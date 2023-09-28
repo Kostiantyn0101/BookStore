@@ -15,7 +15,7 @@ namespace BookStoreWPFWithDbEf.Models
         [StringLength(50)]
         public string LastName { get; set; } = null!;
         [StringLength(50)]
-        public string Email { get; set; } = string.Empty;
+        public string Email { get; set; } = null!;
         [StringLength(50)]
         public string PhoneNumber { get; set; } = null!;
         [StringLength(50)]
