@@ -22,8 +22,11 @@ namespace BookStoreWPFWithDbEf.ViewModels
             get => Model.FirstName;
             set
             {
-                Model.FirstName = value;
-                OnPropertyChanged(nameof(FirstName));
+                if (Model.FirstName != value)
+                {
+                    Model.FirstName = value;
+                    OnPropertyChanged(nameof(FirstName));
+                }
             }
         }
         public string LastName
@@ -31,8 +34,11 @@ namespace BookStoreWPFWithDbEf.ViewModels
             get => Model.LastName;
             set
             {
-                Model.LastName = value;
-                OnPropertyChanged(nameof(LastName));
+                if (Model.LastName != value)
+                {
+                    Model.LastName = value;
+                    OnPropertyChanged(nameof(LastName));
+                }
             }
         }
         public string Email
@@ -40,8 +46,11 @@ namespace BookStoreWPFWithDbEf.ViewModels
             get => Model.Email;
             set
             {
-                Model.Email = value;
-                OnPropertyChanged(nameof(Email));
+                if (Model.Email != value)
+                {
+                    Model.Email = value; 
+                    OnPropertyChanged(nameof(Email));
+                }
             }
         }
         public string PhoneNumber
@@ -49,8 +58,11 @@ namespace BookStoreWPFWithDbEf.ViewModels
             get => Model.PhoneNumber;
             set
             {
-                Model.PhoneNumber = value;
-                OnPropertyChanged(nameof(PhoneNumber));
+                if (Model.PhoneNumber != value)
+                {
+                    Model.PhoneNumber = value;
+                    OnPropertyChanged(nameof(PhoneNumber));
+                }
             }
         }
         public string Login
@@ -58,8 +70,11 @@ namespace BookStoreWPFWithDbEf.ViewModels
             get => Model.Login;
             set
             {
-                Model.Email = value;
-                OnPropertyChanged(nameof(Login));
+                if (Model.Login != value)
+                {
+                    Model.Login = value;
+                    OnPropertyChanged(nameof(Login));
+                }
             }
         }
         public string Password
@@ -67,8 +82,23 @@ namespace BookStoreWPFWithDbEf.ViewModels
             get => Model.Password;
             set
             {
-                Model.Email = value;
-                OnPropertyChanged(nameof(Password));
+                if (Model.Password != value)
+                {
+                    Model.Password = value;
+                    OnPropertyChanged(nameof(Password));
+                }
+            }
+        }
+        public bool IsAdmin
+        {
+            get => Model.IsAdmin;
+            set
+            {
+                if (Model.IsAdmin != value)
+                {
+                    Model.IsAdmin = value;
+                    OnPropertyChanged(nameof(IsAdmin));
+                }
             }
         }
     }

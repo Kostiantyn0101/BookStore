@@ -21,7 +21,7 @@
             <MenuItem Header="Promotions" />
             <MenuItem Header="Settings">
                 <MenuItem Header="Authors" Command="{Binding OpenAuthorsWindowCommand}" />
-                <MenuItem Header="Customers" />
+                <MenuItem Header="Customers" Command="{Binding OpenCustomersWindowCommand}" />
                 <MenuItem Header="Genres" Command="{Binding OpenGenresWindowCommand}" />
             </MenuItem>
         </Menu>
