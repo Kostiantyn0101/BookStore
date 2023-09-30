@@ -26,11 +26,6 @@ namespace BookStoreWPFWithDbEf.ViewModels
         }
 
         #region authors
-        //private List<Authors> allAuthors;
-        //public ObservableCollection<AuthorsVM> Authors
-        //{
-        //    get => new(allAuthors.Select(x => new AuthorsVM(x)));
-        //}
 
         public ICommand OpenAuthorsWindowCommand => new RelayCommand(x =>
         {
@@ -60,5 +55,12 @@ namespace BookStoreWPFWithDbEf.ViewModels
             window.ShowDialog();
         });
         #endregion
+
+
+        //private List<Authors> allAuthors;
+        //public ObservableCollection<AuthorsVM> Authors
+        //{
+        //    get => new(allAuthors.Select(x => new AuthorsVM(x)));
+        //}
     }
 }

@@ -6,65 +6,147 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BookStoreWPFWithDbEf.Tools;
 
 namespace BookStoreWPFWithDbEf.ViewModels
 {
-    public class BooksVM
+    public class BooksVM : NotifyPropertyChangedBase
     {
-        private ICollection<ReceiptGoodViewModel> _receiptGoods;
-        private ICollection<SaleGoodViewModel> _saleGoods;
-        public AuthorsVM(Authors model)
+        private ICollection<ReceiptBook> _receipts;
+        private ICollection<Reservation> _reservations;
+        private ICollection<SaleBook> _sales;
+        public BooksVM(Books model)
         {
-            Model = model; 
-            _receiptGoods = model.ReceiptGoods.Select(x => new ReceiptGoodViewModel(x)).ToList();
-            _saleGoods = model.SaleGoods.Select(x => new SaleGoodViewModel(x)).ToList();
+            Model = model;
+            _receipts = model.Receipts.Select(x => new ReceiptVM(x)).ToList();
+            _sales = model.Sales.Select(x => new SaleVM(x)).ToList();
+            _reservations = model.Reservations.Select(x => new ReservationVM(x)).ToList();
         }
-        public Authors Model { get; set; }
+        public Books Model { get; set; }
         public int Id { get => Model.Id; }
-        public string FullName
+        public string Title
         {
-            get => Model.FullName;
+            get => Model.Title;
             set
             {
-                Model.FullName = value;
-                OnPropertyChanged(nameof(FullName));
+                if (Model.Title != value)
+                {
+                    Model.Title = value;
+                    OnPropertyChanged(nameof(Title));
+                }
             }
         }
-        public StatusViewModel Status
+        public string Publisher
         {
-            get => new StatusViewModel(Model.Status);
+            get => Model.Publisher;
             set
             {
-                Model.Status = value.Model;
-                OnPropertyChanged(nameof(Status));
+                if (Model.Publisher != value)
+                {
+                    Model.Publisher = value;
+                    OnPropertyChanged(nameof(Publisher));
+                }
+            }
+        }
+        public int TotalPages
+        {
+            get => Model.TotalPages;
+            set
+            {
+                if (Model.TotalPages != value)
+                {
+                    Model.TotalPages = value;
+                    OnPropertyChanged(nameof(TotalPages));
+                }
+            }
+        }
+        public int Year
+        {
+            get => Model.Year;
+            set
+            {
+                if (Model.Year != value)
+                {
+                    Model.Year = value;
+                    OnPropertyChanged(nameof(Year));
+                }
+            }
+        }
+        public decimal SalePrice
+        {
+            get => Model.SalePrice;
+            set
+            {
+                if (Model.SalePrice != value)
+                {
+                    Model.SalePrice = value;
+                    OnPropertyChanged(nameof(SalePrice));
+                }
+            }
+        }
+        public decimal CostPrice
+        {
+            get => Model.CostPrice;
+            set
+            {
+                if (Model.CostPrice != value)
+                {
+                    Model.CostPrice = value;
+                    OnPropertyChanged(nameof(CostPrice));
+                }
+            }
+        }
+        public bool IsNew
+        {
+            get => Model.IsNew;
+            set
+            {
+                if (Model.IsNew != value)
+                {
+                    Model.IsNew = value;
+                    OnPropertyChanged(nameof(IsNew));
+                }
+            }
+        }
+        public AuthorsVM Authors
+        {
+            get => new AuthorsVM(Model.Authors);
+            set
+            {
+                Model.Authors = value.Model;
+                OnPropertyChanged(nameof(Authors));
+            }
+        }
+        public GenresVM Genres
+        {
+            get => new GenresVM(Model.Genres);
+            set
+            {
+                Model.Genres = value.Model;
+                OnPropertyChanged(nameof(Genres));
+            }
+        }
+        public BooksVM ContinuationOfBook
+        {
+            get => new BooksVM(Model.ContinuationOfBook);
+            set
+            {
+                Model.ContinuationOfBook = value.Model;
+                OnPropertyChanged(nameof(ContinuationOfBook));
+            }
+        }
+        public int? ContinuationOfBookId
+        {
+            get => Model.ContinuationOfBookId;
+            set
+            {
+                if (Model.ContinuationOfBookId != value)
+                {
+                    Model.ContinuationOfBookId = value;
+                    OnPropertyChanged(nameof(ContinuationOfBookId));
+                }
             }
         }
 
-
-
-        public int Id { get; set; }
-        [StringLength(100)]
-        public string Title { get; set; } = null!;
-        [StringLength(100)]
-        public string Publisher { get; set; } = null!;
-        public int TotalPages { get; set; } = 0;
-        public int Year { get; set; } = 0;
-        [Column(TypeName = "decimal(18,4)")]
-        public decimal SalePrice { get; set; } = 0;
-        [Column(TypeName = "decimal(18,4)")]
-        public decimal CostPrice { get; set; } = 0;
-        public bool IsNew { get; set; } = false;
-        public virtual Authors Authors { get; set; } = null!;
-        public virtual Genres Genres { get; set; } = null!;
-        public int? ContinuationOfBookId { get; set; }
-        [ForeignKey("ContinuationOfBookId")]
-        public virtual Books ContinuationOfBook { get; set; } = null!;
-
-        [InverseProperty(nameof(ReceiptBook.Book))]
-        public virtual ICollection<ReceiptBook> Receipts { get; set; } = null!;
-        [InverseProperty(nameof(SaleBook.Book))]
-        public virtual ICollection<SaleBook> Sales { get; set; } = null!;
-        [InverseProperty(nameof(Reservation.Book))]
-        public virtual ICollection<Reservation> Reservations { get; set; } = null!;
     }
 }
