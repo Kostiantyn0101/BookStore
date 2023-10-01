@@ -12,9 +12,9 @@ namespace BookStoreWPFWithDbEf.ViewModels
 {
     public class BooksVM : NotifyPropertyChangedBase
     {
-        private ICollection<ReceiptBook> _receipts;
-        private ICollection<Reservation> _reservations;
-        private ICollection<SaleBook> _sales;
+        private ICollection<ReceiptVM> _receipts;
+        private ICollection<ReservationVM> _reservations;
+        private ICollection<SaleVM> _sales;
         public BooksVM(Books model)
         {
             Model = model;
@@ -147,6 +147,5 @@ namespace BookStoreWPFWithDbEf.ViewModels
                 }
             }
         }
-
     }
 }

@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace BookStoreWPFWithDbEf.ViewModels
 {
-    public class ReceiptVM : NotifyPropertyChangedBase
+    public class SaleVM : NotifyPropertyChangedBase
     {
-        public ReceiptVM(ReceiptBook model)
+        public SaleVM(SaleBook model)
         {
             Model = model;
         }
-        public ReceiptBook Model { get; set; }
+        public SaleBook Model { get; set; }
         public int Id { get => Model.Id; }
         public DateTime Time
         {

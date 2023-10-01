@@ -53,5 +53,13 @@ namespace BookStoreWPFWithDbEf.ViewModels
                 OnPropertyChanged(nameof(Price));
             }
         }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null) return false;
+            if (obj is not ReceiptVM model) return false;
+            if ((obj as ReceiptVM).Model == null) return false;
+            return Model.Id.Equals((obj as ReceiptVM).Model.Id);
+        }
+
     }
 }

@@ -57,7 +57,7 @@
                                 <DataGridTextColumn Header="CostPrice" Binding="{Binding Path=CostPrice}" />
                                 <DataGridTextColumn Header="SalePrice" Binding="{Binding Path=SalePrice}" />
                                 <DataGridTextColumn Header="Authors" Binding="{Binding Path=Authors.FullName}" />
-                                <DataGridTextColumn Header="SalePrice" Binding="{Binding Path=SalePrice}" />
+                                <DataGridTextColumn Header="Genres" Binding="{Binding Path=Genres.Title}" />
                                 <DataGridTextColumn Header="New" Binding="{Binding Path=IsNew}" />
                             </DataGrid.Columns>
                         </DataGrid>

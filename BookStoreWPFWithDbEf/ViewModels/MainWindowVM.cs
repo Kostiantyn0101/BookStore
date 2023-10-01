@@ -21,8 +21,8 @@ namespace BookStoreWPFWithDbEf.ViewModels
         }
         private void Load()
         {
-            //allAuthors = context.Authors.ToList();
-            //OnPropertyChanged(nameof(Authors));
+            allBooks = context.Books.ToList();
+            OnPropertyChanged(nameof(Books));
         }
 
         #region authors
@@ -56,11 +56,21 @@ namespace BookStoreWPFWithDbEf.ViewModels
         });
         #endregion
 
+        #region Books
 
-        //private List<Authors> allAuthors;
-        //public ObservableCollection<AuthorsVM> Authors
-        //{
-        //    get => new(allAuthors.Select(x => new AuthorsVM(x)));
-        //}
+        private List<Books> allBooks;
+        public ObservableCollection<BooksVM> Books
+        {
+            get => new(allBooks.Select(x => new BooksVM(x)));
+        }
+
+        public ICommand AddNewBookCommand => new RelayCommand(x =>
+        {
+            var window = new CustomersWindow();
+            var wm = new CustomersWindowVM(context);
+            window.DataContext = wm;
+            window.ShowDialog();
+        });
+        #endregion
     }
 }
