@@ -11,20 +11,6 @@
             <ColumnDefinition Width="70*" />
             <ColumnDefinition Width="30*" />
         </Grid.ColumnDefinitions>
-        <DataGrid Grid.Column="0" Margin="5" AutoGenerateColumns="False" IsReadOnly="True" 
-                    ItemsSource="{Binding Path=Customers}" 
-                    SelectedItem="{Binding Path=SelectedCustomers}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" />
-                <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName}" />
-                <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}" />
-                <DataGridTextColumn Header="Email" Binding="{Binding Path=Email}" />
-                <DataGridTextColumn Header="Phone Number" Binding="{Binding Path=PhoneNumber}" />
-                <DataGridTextColumn Header="Login" Binding="{Binding Path=Login}" />
-                <DataGridTextColumn Header="Password" Binding="{Binding Path=Password}" />
-                <DataGridTextColumn Header="Admin" Binding="{Binding Path=IsAdmin}" />
-            </DataGrid.Columns>
-        </DataGrid>
         <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10">
             <TextBlock>Id</TextBlock>
             <TextBox IsReadOnly="True" Text="{Binding Path=SelectedCustomers.Id, Mode=OneWay}"></TextBox>
