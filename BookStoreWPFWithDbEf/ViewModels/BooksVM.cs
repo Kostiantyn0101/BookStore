@@ -19,6 +19,7 @@ namespace BookStoreWPFWithDbEf.ViewModels
         public BooksVM(Books model)
         {
             Model = model;
+            //Load();
         }
 
         public void Load()

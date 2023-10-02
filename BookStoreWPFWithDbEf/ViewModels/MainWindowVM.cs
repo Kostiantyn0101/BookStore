@@ -101,7 +101,6 @@ namespace BookStoreWPFWithDbEf.ViewModels
 
         public ICommand AddNewBookCommand => new RelayCommand(x =>
         {
-            //var model = new BooksVM(new Books());
             var model = new Books();
             model.Title = "Title";
             model.Publisher = "Publisher";
@@ -144,6 +143,16 @@ namespace BookStoreWPFWithDbEf.ViewModels
                 allBooks.Remove(SelectedBook.Model);
                 OnPropertyChanged(nameof(Books));
             }
+        });
+        #endregion
+
+        #region receipts
+        public ICommand OpenReceiptsWindowCommand => new RelayCommand(x =>
+        {
+            var window = new ReceiptsWindow();
+            var wm = new ReceiptsWindowVM(context);
+            window.DataContext = wm;
+            window.ShowDialog();
         });
         #endregion
 
