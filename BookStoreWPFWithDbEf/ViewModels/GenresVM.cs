@@ -21,9 +21,19 @@ namespace BookStoreWPFWithDbEf.ViewModels
             get => Model.Title;
             set
             {
-                Model.Title = value;
-                OnPropertyChanged(nameof(Title));
+                if (Model.Title != value)
+                {
+                    Model.Title = value;
+                    OnPropertyChanged(nameof(Title));
+                }
             }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null) return false;
+            if (obj is not GenresVM model) return false;
+            if ((obj as GenresVM).Model == null) return false;
+            return Model.Id.Equals((obj as GenresVM).Model.Id);
         }
     }
 }

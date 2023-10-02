@@ -35,14 +35,14 @@ namespace BookStoreWPFWithDbEf.ViewModels
         private AuthorsVM selectedAuthor;
         public AuthorsVM SelectedAuthor
         {
-            get
-            {
-                return selectedAuthor;
-            }
+            get => selectedAuthor;
             set
             {
-                selectedAuthor = value;
-                OnPropertyChanged(nameof(SelectedAuthor));
+                if (value != selectedAuthor)
+                {
+                    selectedAuthor = value;
+                    OnPropertyChanged(nameof(SelectedAuthor));
+                }
             }
         }
         public ICommand AddNewCommand => new RelayCommand(x =>

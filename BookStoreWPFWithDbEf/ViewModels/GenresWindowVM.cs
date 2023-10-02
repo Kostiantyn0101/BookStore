@@ -35,14 +35,14 @@ namespace BookStoreWPFWithDbEf.ViewModels
         private GenresVM selectedGenre;
         public GenresVM SelectedGenre
         {
-            get
-            {
-                return selectedGenre;
-            }
+            get => selectedGenre;
             set
             {
-                selectedGenre = value;
-                OnPropertyChanged(nameof(SelectedGenre));
+                if (value != selectedGenre)
+                {
+                    selectedGenre = value;
+                    OnPropertyChanged(nameof(SelectedGenre));
+                }
             }
         }
         public ICommand AddNewCommand => new RelayCommand(x =>

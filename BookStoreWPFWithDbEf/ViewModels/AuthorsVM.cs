@@ -10,20 +10,30 @@ namespace BookStoreWPFWithDbEf.ViewModels
 {
     public class AuthorsVM : NotifyPropertyChangedBase
     {
+        public Authors Model { get; set; }
         public AuthorsVM(Authors model)
         {
             Model = model;
         }
-        public Authors Model { get; set; }
         public int Id { get => Model.Id; }
         public string FullName
         {
             get => Model.FullName;
             set
             {
-                Model.FullName = value;
-                OnPropertyChanged(nameof(FullName));
+                if (Model.FullName != value)
+                {
+                    Model.FullName = value;
+                    OnPropertyChanged(nameof(FullName));
+                }
             }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null) return false;
+            if (obj is not AuthorsVM model) return false;
+            if ((obj as AuthorsVM).Model == null) return false;
+            return Model.Id.Equals((obj as AuthorsVM).Model.Id);
         }
     }
 }

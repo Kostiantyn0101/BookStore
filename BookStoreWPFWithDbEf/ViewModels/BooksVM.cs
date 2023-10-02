@@ -15,13 +15,19 @@ namespace BookStoreWPFWithDbEf.ViewModels
         private ICollection<ReceiptVM> _receipts;
         private ICollection<ReservationVM> _reservations;
         private ICollection<SaleVM> _sales;
+
         public BooksVM(Books model)
         {
             Model = model;
-            _receipts = model.Receipts.Select(x => new ReceiptVM(x)).ToList();
-            _sales = model.Sales.Select(x => new SaleVM(x)).ToList();
-            _reservations = model.Reservations.Select(x => new ReservationVM(x)).ToList();
         }
+
+        public void Load()
+        {
+            _receipts = Model.Receipts.Select(x => new ReceiptVM(x)).ToList();
+            _sales = Model.Sales.Select(x => new SaleVM(x)).ToList();
+            _reservations = Model.Reservations.Select(x => new ReservationVM(x)).ToList();
+        }
+
         public Books Model { get; set; }
         public int Id { get => Model.Id; }
         public string Title
@@ -113,8 +119,11 @@ namespace BookStoreWPFWithDbEf.ViewModels
             get => new AuthorsVM(Model.Authors);
             set
             {
-                Model.Authors = value.Model;
-                OnPropertyChanged(nameof(Authors));
+                if (Model.Authors != value.Model)
+                {
+                    Model.Authors = value.Model;
+                    OnPropertyChanged(nameof(Authors));
+                }
             }
         }
         public GenresVM Genres
@@ -122,8 +131,11 @@ namespace BookStoreWPFWithDbEf.ViewModels
             get => new GenresVM(Model.Genres);
             set
             {
-                Model.Genres = value.Model;
-                OnPropertyChanged(nameof(Genres));
+                if (Model.Genres != value.Model)
+                {
+                    Model.Genres = value.Model;
+                    OnPropertyChanged(nameof(Genres));
+                }
             }
         }
         public BooksVM ContinuationOfBook
@@ -131,8 +143,11 @@ namespace BookStoreWPFWithDbEf.ViewModels
             get => new BooksVM(Model.ContinuationOfBook);
             set
             {
-                Model.ContinuationOfBook = value.Model;
-                OnPropertyChanged(nameof(ContinuationOfBook));
+                if (Model.ContinuationOfBook != value.Model)
+                {
+                    Model.ContinuationOfBook = value.Model;
+                    OnPropertyChanged(nameof(ContinuationOfBook));
+                }
             }
         }
         public int? ContinuationOfBookId
@@ -146,6 +161,13 @@ namespace BookStoreWPFWithDbEf.ViewModels
                     OnPropertyChanged(nameof(ContinuationOfBookId));
                 }
             }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null) return false;
+            if (obj is not BooksVM model) return false;
+            if ((obj as BooksVM).Model == null) return false;
+            return Model.Id.Equals((obj as BooksVM).Model.Id);
         }
     }
 }

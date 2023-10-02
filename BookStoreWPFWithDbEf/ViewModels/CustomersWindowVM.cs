@@ -36,20 +36,20 @@ namespace BookStoreWPFWithDbEf.ViewModels
         private CustomersVM selectedCustomers;
         public CustomersVM SelectedCustomers
         {
-            get
-            {
-                return selectedCustomers;
-            }
+            get => selectedCustomers;
             set
             {
-                selectedCustomers = value;
-                OnPropertyChanged(nameof(SelectedCustomers));
+                if (value != selectedCustomers)
+                {
+                    selectedCustomers = value;
+                    OnPropertyChanged(nameof(SelectedCustomers));
+                }
             }
         }
         public ICommand AddNewCommand => new RelayCommand(x =>
         {
             var author = new Customers()
-            { 
+            {
                 FirstName = string.Empty,
                 LastName = string.Empty,
                 PhoneNumber = string.Empty,

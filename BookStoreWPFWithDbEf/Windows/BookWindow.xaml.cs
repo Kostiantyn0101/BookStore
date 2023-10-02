@@ -23,5 +23,10 @@ namespace BookStoreWPFWithDbEf.Windows
         {
             InitializeComponent();
         }
+        private void Save(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+            Close();
+        }
     }
 }

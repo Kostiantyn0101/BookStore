@@ -22,8 +22,11 @@ namespace BookStoreWPFWithDbEf.ViewModels
             get => Model.Time;
             set
             {
-                Model.Time = value;
-                OnPropertyChanged(nameof(Time));
+                if (Model.Time != value)
+                {
+                    Model.Time = value;
+                    OnPropertyChanged(nameof(Time));
+                }
             }
         }
         public BooksVM Book
@@ -31,8 +34,11 @@ namespace BookStoreWPFWithDbEf.ViewModels
             get => new BooksVM(Model.Book);
             set
             {
-                Model.Book = value.Model;
-                OnPropertyChanged(nameof(Book));
+                if (Model.Book != value.Model)
+                {
+                    Model.Book = value.Model;
+                    OnPropertyChanged(nameof(Book));
+                }
             }
         }
         public int Count
@@ -40,8 +46,11 @@ namespace BookStoreWPFWithDbEf.ViewModels
             get => Model.Count;
             set
             {
-                Model.Count = value;
-                OnPropertyChanged(nameof(Count));
+                if (Model.Count != value)
+                {
+                    Model.Count = value;
+                    OnPropertyChanged(nameof(Count));
+                }
             }
         }
         public decimal Price
@@ -49,8 +58,11 @@ namespace BookStoreWPFWithDbEf.ViewModels
             get => Model.Price;
             set
             {
-                Model.Price = value;
-                OnPropertyChanged(nameof(Price));
+                if (Model.Price != value)
+                {
+                    Model.Price = value;
+                    OnPropertyChanged(nameof(Price));
+                }
             }
         }
     }

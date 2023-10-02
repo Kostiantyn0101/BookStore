@@ -41,13 +41,13 @@
                             <Button Width="120" Height="28" Margin="4 4" Content="Delete book"
                                     Command="{Binding DeleteBookCommand}"/>
                             <Button Width="120" Height="28" Margin="4 4" Content="Save"
-                                    Command="{Binding SaveBookCommand}"/>
+                                    Command="{Binding SaveCommand}"/>
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="1">
                         <DataGrid Margin="5" AutoGenerateColumns="False" IsReadOnly="True"
-                                  ItemsSource="{Binding Books}" 
-                                  SelectedItem="{Binding SelectedBooks}">
+                                  ItemsSource="{Binding Path=Books}" 
+                                  SelectedItem="{Binding Path=SelectedBook}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" />
                                 <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}" />

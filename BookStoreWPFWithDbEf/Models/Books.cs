@@ -26,13 +26,13 @@ namespace BookStoreWPFWithDbEf.Models
         public virtual Genres Genres { get; set; } = null!;
         public int? ContinuationOfBookId { get; set; }
         [ForeignKey("ContinuationOfBookId")]
-        public virtual Books ContinuationOfBook { get; set; } = null!;
+        public virtual Books ContinuationOfBook { get; set; }
         [InverseProperty(nameof(ReceiptBook.Book))]
-        public virtual ICollection<ReceiptBook> Receipts { get; set; } = null!;
+        public virtual ICollection<ReceiptBook> Receipts { get; set; }
         [InverseProperty(nameof(SaleBook.Book))]
-        public virtual ICollection<SaleBook> Sales { get; set; } = null!;
+        public virtual ICollection<SaleBook> Sales { get; set; }
         [InverseProperty(nameof(Reservation.Book))]
-        public virtual ICollection<Reservation> Reservations { get; set; } = null!;
+        public virtual ICollection<Reservation> Reservations { get; set; }
 
     }
 }

@@ -11,32 +11,47 @@
             <ColumnDefinition Width="50*" />
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10">
-            <TextBlock>Id</TextBlock>
-            <TextBox IsReadOnly="True" Text="{Binding Path=SelectedBook.Id, Mode=OneWay}"></TextBox>
             <TextBlock>Title</TextBlock>
-            <TextBox Text="{Binding Path=SelectedBook.Title, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBox Text="{Binding Path=Title, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <TextBlock>Publisher</TextBlock>
-            <TextBox Text="{Binding Path=SelectedBook.Publisher, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBox Text="{Binding Path=Publisher, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <TextBlock>Total Pages</TextBlock>
-            <TextBox Text="{Binding Path=SelectedBook.TotalPages, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBox Text="{Binding Path=TotalPages, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <TextBlock>Year</TextBlock>
-            <TextBox Text="{Binding Path=SelectedBook.Year, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBox Text="{Binding Path=Year, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <TextBlock>CostPrice</TextBlock>
-            <TextBox Text="{Binding Path=SelectedBook.CostPrice, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBox Text="{Binding Path=CostPrice, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <TextBlock>SalePrice</TextBlock>
-            <TextBox Text="{Binding Path=SelectedBook.SalePrice, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBox Text="{Binding Path=SalePrice, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <TextBlock>Authors</TextBlock>
-            <TextBox Text="{Binding Path=SelectedBook.Authors.FullName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <ComboBox ItemsSource="{Binding Path=_Authors}" SelectedItem="{Binding Path=SelectedAuthor}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                        <TextBlock Text="{Binding Path=Id}"></TextBlock>
+                        <TextBlock>-</TextBlock>
+                        <TextBlock Text="{Binding Path=FullName}"></TextBlock>
+                    </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <TextBlock>Genres</TextBlock>
-            <TextBox Text="{Binding Path=SelectedBook.Genres.Title, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <ComboBox ItemsSource="{Binding Path=_Genres}" SelectedItem="{Binding Path=SelectedGenre}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <TextBlock Text="{Binding Path=Id}"></TextBlock>
+                            <TextBlock>-</TextBlock>
+                            <TextBlock Text="{Binding Path=Title}"></TextBlock>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <StackPanel Margin="0 4" Orientation="Horizontal">
                 <TextBlock>New</TextBlock>
-                <CheckBox Margin="8 0" IsChecked="{Binding Path=SelectedCustomers.IsNew, UpdateSourceTrigger=PropertyChanged}"/>
+                <CheckBox Margin="8 0" IsChecked="{Binding Path=IsNew, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
-            <StackPanel Margin="20">
-                <Button Width="120" Height="28" Margin="4 4"
-                Command="{Binding SaveCommand}" Content="Save"/>
-            </StackPanel>
+            <Button Width="120" Height="28" Margin="4 4" Click="Save" Content="Save"/>
         </StackPanel>
     </Grid>
 </Window>
