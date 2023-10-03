@@ -33,6 +33,8 @@ namespace BookStoreWPFWithDbEf.Models
         public virtual ICollection<SaleBook> Sales { get; set; }
         [InverseProperty(nameof(Reservation.Book))]
         public virtual ICollection<Reservation> Reservations { get; set; }
+        [InverseProperty(nameof(WriteOff.Book))]
+        public virtual ICollection<WriteOff> WriteOffs { get; set; }
 
     }
 }

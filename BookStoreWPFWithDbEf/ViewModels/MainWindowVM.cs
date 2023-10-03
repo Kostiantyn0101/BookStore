@@ -186,6 +186,16 @@ namespace BookStoreWPFWithDbEf.ViewModels
         });
         #endregion
 
+        #region WriteOff
+        public ICommand OpenWriteOffWindowCommand => new RelayCommand(x =>
+        {
+            var window = new WriteOffsWindow();
+            var wm = new WriteOffWindowVM(context);
+            window.DataContext = wm;
+            window.ShowDialog();
+        });
+        #endregion
+
         public ICommand SaveCommand => new RelayCommand(x =>
         {
             try
@@ -197,6 +207,10 @@ namespace BookStoreWPFWithDbEf.ViewModels
                 MessageBox.Show(ex.Message);
             }
             Load();
+        });
+        public ICommand CloseCommand => new RelayCommand(x =>
+        {
+            Application.Current.Shutdown();
         });
     }
 }

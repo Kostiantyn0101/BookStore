@@ -30,6 +30,8 @@ namespace BookStoreWPFWithDbEf.Models
         public virtual DbSet<ReceiptBook> ReceiptBook { get; set; } = null!;
         public virtual DbSet<Reservation> Reservation { get; set; } = null!;
         public virtual DbSet<SaleBook> SaleBook { get; set; } = null!;
+        public virtual DbSet<WriteOff> WriteOff { get; set; } = null!;
+
 
     }
 }

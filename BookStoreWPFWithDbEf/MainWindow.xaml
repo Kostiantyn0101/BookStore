@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookStoreWPFWithDbEf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Book Store" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -13,12 +13,19 @@
         </Grid.RowDefinitions>
         <Menu Padding="0 4" Grid.Row="0">
             <MenuItem  Header="File">
-                <MenuItem Header="Exit" />
+                <MenuItem Header="Add book" Command="{Binding AddNewBookCommand}" />
+                <MenuItem Header="Edit book" Command="{Binding EditBookCommand}" />
+                <MenuItem Header="Delete book" Command="{Binding DeleteBookCommand}" />
+                <MenuItem Header="Save" Command="{Binding SaveCommand}" />
+                <MenuItem Header="Exit" Command="{Binding CloseCommand}" />
             </MenuItem>
-            <MenuItem Header="Sale" Command="{Binding OpenSalesWindowCommand}" />
-            <MenuItem Header="Receipt" Command="{Binding OpenReceiptsWindowCommand}" />
-            <MenuItem Header="Reservation" Command="{Binding OpenReservationsWindowCommand}" />
-            <MenuItem Header="Promotions" Command="{Binding OpenPromotionsWindowCommand}" />
+            <MenuItem Header="Operations">
+                <MenuItem Header="Sale" Command="{Binding OpenSalesWindowCommand}" /> 
+                <MenuItem Header="Receipt" Command="{Binding OpenReceiptsWindowCommand}" />
+                <MenuItem Header="Reservation" Command="{Binding OpenReservationsWindowCommand}" />
+                <MenuItem Header="Promotions" Command="{Binding OpenPromotionsWindowCommand}" />
+                <MenuItem Header="WriteOff" Command="{Binding OpenWriteOffWindowCommand}" />
+            </MenuItem>
             <MenuItem Header="Settings">
                 <MenuItem Header="Authors" Command="{Binding OpenAuthorsWindowCommand}" />
                 <MenuItem Header="Customers" Command="{Binding OpenCustomersWindowCommand}" />
@@ -34,14 +41,14 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Button Width="120" Height="28" Margin="4 4" Content="Add book" 
+                            <!--<Button Width="120" Height="28" Margin="4 4" Content="Add book" 
                                     Command="{Binding AddNewBookCommand}"/>
-                            <Button Width="120" Height="28" Margin="4 4" Content="Edit book"
+                                <Button Width="120" Height="28" Margin="4 4" Content="Edit book"
                                     Command="{Binding EditBookCommand}"/>
-                            <Button Width="120" Height="28" Margin="4 4" Content="Delete book"
+                                <Button Width="120" Height="28" Margin="4 4" Content="Delete book"
                                     Command="{Binding DeleteBookCommand}"/>
-                            <Button Width="120" Height="28" Margin="4 4" Content="Save"
-                                    Command="{Binding SaveCommand}"/>
+                                <Button Width="120" Height="28" Margin="4 4" Content="Save"
+                                    Command="{Binding SaveCommand}"/>-->
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="1">

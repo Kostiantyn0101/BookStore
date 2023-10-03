@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStoreWPFWithDbEf.Migrations
 {
     [DbContext(typeof(BookStoreContext))]
-    [Migration("20231003142831_upd")]
-    partial class upd
+    [Migration("20231003222209_WriteOffs")]
+    partial class WriteOffs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -273,6 +273,35 @@ namespace BookStoreWPFWithDbEf.Migrations
                     b.ToTable("SaleBook");
                 });
 
+            modelBuilder.Entity("BookStoreWPFWithDbEf.Models.WriteOff", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("WriteOff");
+                });
+
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Books", b =>
                 {
                     b.HasOne("BookStoreWPFWithDbEf.Models.Authors", "Authors")
@@ -350,6 +379,17 @@ namespace BookStoreWPFWithDbEf.Migrations
                     b.Navigation("Book");
                 });
 
+            modelBuilder.Entity("BookStoreWPFWithDbEf.Models.WriteOff", b =>
+                {
+                    b.HasOne("BookStoreWPFWithDbEf.Models.Books", "Book")
+                        .WithMany("WriteOffs")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+                });
+
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Authors", b =>
                 {
                     b.Navigation("Books");
@@ -362,6 +402,8 @@ namespace BookStoreWPFWithDbEf.Migrations
                     b.Navigation("Reservations");
 
                     b.Navigation("Sales");
+
+                    b.Navigation("WriteOffs");
                 });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Genres", b =>
