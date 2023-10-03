@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookStoreWPFWithDbEf.Windows"
         mc:Ignorable="d"
-            Title="Sales" Height="450" Width="800">
+        Title="Sales" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="65*" />
             <ColumnDefinition Width="35*" />
         </Grid.ColumnDefinitions>
         <DataGrid Grid.Column="0" Margin="5" AutoGenerateColumns="False" IsReadOnly="True" 
-            ItemsSource="{Binding Path=Sales}" 
-            SelectedItem="{Binding Path=SelectedSale}">
+                ItemsSource="{Binding Path=Sales}" 
+                SelectedItem="{Binding Path=SelectedSale}"> 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" />
                 <DataGridTextColumn Header="Book" Binding="{Binding Path=Book.Title}" />
@@ -30,10 +30,10 @@
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
-                        <TextBlock Text="{Binding Path=Id}"></TextBlock>
-                        <TextBlock>-</TextBlock>
-                        <TextBlock Text="{Binding Path=Title}"></TextBlock>
-                    </TextBlock>
+                            <TextBlock Text="{Binding Path=Id}"></TextBlock>
+                            <TextBlock>-</TextBlock>
+                            <TextBlock Text="{Binding Path=Title}"></TextBlock>
+                        </TextBlock>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
@@ -45,11 +45,11 @@
             <TextBox Text="{Binding Path=SelectedSale.Price, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <StackPanel>
                 <Button Width="120" Height="28" Margin="4 2" Content="Add new"
-            Command="{Binding AddNewCommand}" />
-                <Button Width="120" Height="28" Margin="4 2"
-            Command="{Binding DeleteCommand}" Content="Delete" />
-                <Button Width="120" Height="28" Margin="4 2"
-            Command="{Binding SaveCommand}" Content="Save"/>
+                    Command="{Binding AddNewCommand}" />
+                            <Button Width="120" Height="28" Margin="4 2"
+                    Command="{Binding DeleteCommand}" Content="Delete" />
+                            <Button Width="120" Height="28" Margin="4 2"
+                    Command="{Binding SaveCommand}" Content="Save"/>    
             </StackPanel>
         </StackPanel>
     </Grid>

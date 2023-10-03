@@ -141,7 +141,20 @@ namespace BookStoreWPFWithDbEf.ViewModels
         }
         public BooksVM ContinuationOfBook
         {
-            get => new BooksVM(Model.ContinuationOfBook);
+            get 
+            {
+                if (Model.ContinuationOfBook == null)
+                {
+                    return new BooksVM(Model.ContinuationOfBook)
+                    {
+                        Model = new Books()
+                        {
+                            Title = "no"
+                        }
+                    };
+                }
+                return new BooksVM(Model.ContinuationOfBook);
+            }
             set
             {
                 if (Model.ContinuationOfBook != value.Model)

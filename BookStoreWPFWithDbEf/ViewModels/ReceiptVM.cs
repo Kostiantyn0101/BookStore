@@ -72,6 +72,5 @@ namespace BookStoreWPFWithDbEf.ViewModels
             if ((obj as ReceiptVM).Model == null) return false;
             return Model.Id.Equals((obj as ReceiptVM).Model.Id);
         }
-
     }
 }

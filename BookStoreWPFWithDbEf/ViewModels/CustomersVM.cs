@@ -41,6 +41,10 @@ namespace BookStoreWPFWithDbEf.ViewModels
                 }
             }
         }
+        public string FullName
+        { 
+            get => $"{LastName} {FirstName}";
+        }
         public string Email
         {
             get => Model.Email;
@@ -100,6 +104,13 @@ namespace BookStoreWPFWithDbEf.ViewModels
                     OnPropertyChanged(nameof(IsAdmin));
                 }
             }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null) return false;
+            if (obj is not CustomersVM model) return false;
+            if ((obj as CustomersVM).Model == null) return false;
+            return Model.Id.Equals((obj as CustomersVM).Model.Id);
         }
     }
 }

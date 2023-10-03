@@ -46,9 +46,11 @@ namespace BookStoreWPFWithDbEf.ViewModels
             {
                 selectedGenre = new GenresVM(Model.Genres);
             }
-            else 
+            else
             {
                 selectedGenre = new GenresVM(allGenres.FirstOrDefault());
+                Model.Genres = selectedGenre.Model;
+
             }
             if (Model.Authors != null)
             {
@@ -57,6 +59,8 @@ namespace BookStoreWPFWithDbEf.ViewModels
             else
             {
                 selectedAuthor = new AuthorsVM(allAuthors.FirstOrDefault());
+                Model.Authors = selectedAuthor.Model;
+
             }
         }
         private List<Authors> allAuthors = new List<Authors>();

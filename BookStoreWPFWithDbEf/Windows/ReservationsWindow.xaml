@@ -12,44 +12,57 @@
             <ColumnDefinition Width="35*" />
         </Grid.ColumnDefinitions>
         <DataGrid Grid.Column="0" Margin="5" AutoGenerateColumns="False" IsReadOnly="True" 
-            ItemsSource="{Binding Path=Receipts}" 
-            SelectedItem="{Binding Path=SelectedReceipt}">
+        ItemsSource="{Binding Path=Reservations}" 
+        SelectedItem="{Binding Path=SelectedReservation}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" />
                 <DataGridTextColumn Header="Book" Binding="{Binding Path=Book.Title}" />
                 <DataGridTextColumn Header="Time" Binding="{Binding Path=Time}" />
                 <DataGridTextColumn Header="Count" Binding="{Binding Path=Count}" />
                 <DataGridTextColumn Header="Price" Binding="{Binding Path=Price}" />
+                <DataGridTextColumn Header="Customer" Binding="{Binding Path=Customer.FullName}" />
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10">
             <TextBlock>Id</TextBlock>
-            <TextBox IsReadOnly="True" Text="{Binding Path=SelectedReceipt.Id, Mode=OneWay}"></TextBox>
+            <TextBox IsReadOnly="True" Text="{Binding Path=SelectedReservation.Id, Mode=OneWay}"></TextBox>
             <TextBlock Margin="0 4 0 0">Book</TextBlock>
-            <ComboBox ItemsSource="{Binding Path=Books}" SelectedItem="{Binding Path=SelectedReceipt.Book}">
+            <ComboBox ItemsSource="{Binding Path=Books}" SelectedItem="{Binding Path=SelectedReservation.Book}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                    <TextBlock Text="{Binding Path=Id}"></TextBlock>
+                    <TextBlock>-</TextBlock>
+                    <TextBlock Text="{Binding Path=Title}"></TextBlock>
+                </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Margin="0 4 0 0">Time</TextBlock>
+            <TextBox Text="{Binding Path=SelectedReservation.Time, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBlock Margin="0 4 0 0">Count</TextBlock>
+            <TextBox Text="{Binding Path=SelectedReservation.Count, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBlock Margin="0 4 0 0">Price</TextBlock>
+            <TextBox Text="{Binding Path=SelectedReservation.Price, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBlock Margin="0 4 0 0">Customer</TextBlock>
+            <ComboBox ItemsSource="{Binding Path=Customers}" SelectedItem="{Binding Path=SelectedReservation.Customer}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
                         <TextBlock Text="{Binding Path=Id}"></TextBlock>
                         <TextBlock>-</TextBlock>
-                        <TextBlock Text="{Binding Path=Title}"></TextBlock>
+                        <TextBlock Text="{Binding Path=FullName}"></TextBlock>
                     </TextBlock>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <TextBlock Margin="0 4 0 0">Time</TextBlock>
-            <TextBox Text="{Binding Path=SelectedReceipt.Time, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <TextBlock Margin="0 4 0 0">Count</TextBlock>
-            <TextBox Text="{Binding Path=SelectedReceipt.Count, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <TextBlock Margin="0 4 0 0">Price</TextBlock>
-            <TextBox Text="{Binding Path=SelectedReceipt.Price, UpdateSourceTrigger=PropertyChanged}"></TextBox>
             <StackPanel>
                 <Button Width="120" Height="28" Margin="4 2" Content="Add new"
-            Command="{Binding AddNewCommand}" />
+        Command="{Binding AddNewCommand}" />
                 <Button Width="120" Height="28" Margin="4 2"
-            Command="{Binding DeleteCommand}" Content="Delete" />
+        Command="{Binding DeleteCommand}" Content="Delete" />
                 <Button Width="120" Height="28" Margin="4 2"
-            Command="{Binding SaveCommand}" Content="Save"/>
+        Command="{Binding SaveCommand}" Content="Save"/>
             </StackPanel>
         </StackPanel>
     </Grid>

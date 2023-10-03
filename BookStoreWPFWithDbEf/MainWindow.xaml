@@ -17,8 +17,8 @@
             </MenuItem>
             <MenuItem Header="Sale" Command="{Binding OpenSalesWindowCommand}" />
             <MenuItem Header="Receipt" Command="{Binding OpenReceiptsWindowCommand}" />
-            <MenuItem Header="Reservation" />
-            <MenuItem Header="Promotions" />
+            <MenuItem Header="Reservation" Command="{Binding OpenReservationsWindowCommand}" />
+            <MenuItem Header="Promotions" Command="{Binding OpenPromotionsWindowCommand}" />
             <MenuItem Header="Settings">
                 <MenuItem Header="Authors" Command="{Binding OpenAuthorsWindowCommand}" />
                 <MenuItem Header="Customers" Command="{Binding OpenCustomersWindowCommand}" />
@@ -58,6 +58,7 @@
                                 <DataGridTextColumn Header="SalePrice" Binding="{Binding Path=SalePrice}" />
                                 <DataGridTextColumn Header="Authors" Binding="{Binding Path=Authors.FullName}" />
                                 <DataGridTextColumn Header="Genres" Binding="{Binding Path=Genres.Title}" />
+                                <DataGridTextColumn Header="Continuation Of Book" Binding="{Binding Path=ContinuationOfBook.Title}" />
                                 <DataGridTextColumn Header="New" Binding="{Binding Path=IsNew}" />
                             </DataGrid.Columns>
                         </DataGrid>

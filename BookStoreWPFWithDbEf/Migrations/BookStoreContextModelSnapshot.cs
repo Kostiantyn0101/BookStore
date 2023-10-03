@@ -23,348 +23,348 @@ namespace BookStoreWPFWithDbEf.Migrations
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Authors", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                b.Property<string>("FullName")
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Authors", (string)null);
-                });
+                b.ToTable("Authors", (string)null);
+            });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Books", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AuthorsId")
-                        .HasColumnType("int");
+                b.Property<int>("AuthorsId")
+                    .HasColumnType("int");
 
-                    b.Property<int?>("ContinuationOfBookId")
-                        .HasColumnType("int");
+                b.Property<int?>("ContinuationOfBookId")
+                    .HasColumnType("int");
 
-                    b.Property<decimal>("CostPrice")
-                        .HasColumnType("decimal(18,4)");
+                b.Property<decimal>("CostPrice")
+                    .HasColumnType("decimal(18,4)");
 
-                    b.Property<int>("GenresId")
-                        .HasColumnType("int");
+                b.Property<int>("GenresId")
+                    .HasColumnType("int");
 
-                    b.Property<bool>("IsNew")
-                        .HasColumnType("bit");
+                b.Property<bool>("IsNew")
+                    .HasColumnType("bit");
 
-                    b.Property<string>("Publisher")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                b.Property<string>("Publisher")
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .HasColumnType("nvarchar(100)");
 
-                    b.Property<decimal>("SalePrice")
-                        .HasColumnType("decimal(18,4)");
+                b.Property<decimal>("SalePrice")
+                    .HasColumnType("decimal(18,4)");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                b.Property<string>("Title")
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("TotalPages")
-                        .HasColumnType("int");
+                b.Property<int>("TotalPages")
+                    .HasColumnType("int");
 
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
+                b.Property<int>("Year")
+                    .HasColumnType("int");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("AuthorsId");
+                b.HasIndex("AuthorsId");
 
-                    b.HasIndex("ContinuationOfBookId");
+                b.HasIndex("ContinuationOfBookId");
 
-                    b.HasIndex("GenresId");
+                b.HasIndex("GenresId");
 
-                    b.ToTable("Books", (string)null);
-                });
+                b.ToTable("Books", (string)null);
+            });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Customers", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                b.Property<string>("Email")
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                b.Property<string>("FirstName")
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnType("nvarchar(50)");
 
-                    b.Property<bool>("IsAdmin")
-                        .HasColumnType("bit");
+                b.Property<bool>("IsAdmin")
+                    .HasColumnType("bit");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                b.Property<string>("LastName")
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Login")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                b.Property<string>("Login")
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                b.Property<string>("Password")
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                b.Property<string>("PhoneNumber")
+                    .IsRequired()
+                    .HasMaxLength(30)
+                    .HasColumnType("nvarchar(30)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Customers", (string)null);
-                });
+                b.ToTable("Customers", (string)null);
+            });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Genres", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                b.Property<string>("Title")
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Genres", (string)null);
-                });
+                b.ToTable("Genres", (string)null);
+            });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Promotions", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
+                b.Property<int>("BookId")
+                    .HasColumnType("int");
 
-                    b.Property<int>("Discount")
-                        .HasColumnType("int");
+                b.Property<int>("Discount")
+                    .HasColumnType("int");
 
-                    b.Property<DateTime>("End")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime>("End")
+                    .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("Start")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime>("Start")
+                    .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("BookId");
+                b.HasIndex("BookId");
 
-                    b.ToTable("Promotions", (string)null);
-                });
+                b.ToTable("Promotions", (string)null);
+            });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.ReceiptBook", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
+                b.Property<int>("BookId")
+                    .HasColumnType("int");
 
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
+                b.Property<int>("Count")
+                    .HasColumnType("int");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,4)");
+                b.Property<decimal>("Price")
+                    .HasColumnType("decimal(18,4)");
 
-                    b.Property<DateTime>("Time")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime>("Time")
+                    .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("BookId");
+                b.HasIndex("BookId");
 
-                    b.ToTable("ReceiptBook", (string)null);
-                });
+                b.ToTable("ReceiptBook", (string)null);
+            });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Reservation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
+                b.Property<int>("BookId")
+                    .HasColumnType("int");
 
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
+                b.Property<int>("Count")
+                    .HasColumnType("int");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
+                b.Property<int>("CustomerId")
+                    .HasColumnType("int");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,4)");
+                b.Property<decimal>("Price")
+                    .HasColumnType("decimal(18,4)");
 
-                    b.Property<DateTime>("Time")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime>("Time")
+                    .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("BookId");
+                b.HasIndex("BookId");
 
-                    b.HasIndex("CustomerId");
+                b.HasIndex("CustomerId");
 
-                    b.ToTable("Reservation", (string)null);
-                });
+                b.ToTable("Reservation", (string)null);
+            });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.SaleBook", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
+                b.Property<int>("BookId")
+                    .HasColumnType("int");
 
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
+                b.Property<int>("Count")
+                    .HasColumnType("int");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,4)");
+                b.Property<decimal>("Price")
+                    .HasColumnType("decimal(18,4)");
 
-                    b.Property<DateTime>("Time")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime>("Time")
+                    .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("BookId");
+                b.HasIndex("BookId");
 
-                    b.ToTable("SaleBook", (string)null);
-                });
+                b.ToTable("SaleBook", (string)null);
+            });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Books", b =>
-                {
-                    b.HasOne("BookStoreWPFWithDbEf.Models.Authors", "Authors")
-                        .WithMany("Books")
-                        .HasForeignKey("AuthorsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("BookStoreWPFWithDbEf.Models.Authors", "Authors")
+                    .WithMany("Books")
+                    .HasForeignKey("AuthorsId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.HasOne("BookStoreWPFWithDbEf.Models.Books", "ContinuationOfBook")
-                        .WithMany()
-                        .HasForeignKey("ContinuationOfBookId");
+                b.HasOne("BookStoreWPFWithDbEf.Models.Books", "ContinuationOfBook")
+                    .WithMany()
+                    .HasForeignKey("ContinuationOfBookId");
 
-                    b.HasOne("BookStoreWPFWithDbEf.Models.Genres", "Genres")
-                        .WithMany("Books")
-                        .HasForeignKey("GenresId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.HasOne("BookStoreWPFWithDbEf.Models.Genres", "Genres")
+                    .WithMany("Books")
+                    .HasForeignKey("GenresId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("Authors");
+                b.Navigation("Authors");
 
-                    b.Navigation("ContinuationOfBook");
+                b.Navigation("ContinuationOfBook");
 
-                    b.Navigation("Genres");
-                });
+                b.Navigation("Genres");
+            });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Promotions", b =>
-                {
-                    b.HasOne("BookStoreWPFWithDbEf.Models.Books", "Book")
-                        .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("BookStoreWPFWithDbEf.Models.Books", "Book")
+                    .WithMany()
+                    .HasForeignKey("BookId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("Book");
-                });
+                b.Navigation("Book");
+            });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.ReceiptBook", b =>
-                {
-                    b.HasOne("BookStoreWPFWithDbEf.Models.Books", "Book")
-                        .WithMany("Receipts")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("BookStoreWPFWithDbEf.Models.Books", "Book")
+                    .WithMany("Receipts")
+                    .HasForeignKey("BookId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("Book");
-                });
+                b.Navigation("Book");
+            });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Reservation", b =>
-                {
-                    b.HasOne("BookStoreWPFWithDbEf.Models.Books", "Book")
-                        .WithMany("Reservations")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("BookStoreWPFWithDbEf.Models.Books", "Book")
+                    .WithMany("Reservations")
+                    .HasForeignKey("BookId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.HasOne("BookStoreWPFWithDbEf.Models.Customers", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.HasOne("BookStoreWPFWithDbEf.Models.Customers", "Customer")
+                    .WithMany()
+                    .HasForeignKey("CustomerId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("Book");
+                b.Navigation("Book");
 
-                    b.Navigation("Customer");
-                });
+                b.Navigation("Customer");
+            });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.SaleBook", b =>
-                {
-                    b.HasOne("BookStoreWPFWithDbEf.Models.Books", "Book")
-                        .WithMany("Sales")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("BookStoreWPFWithDbEf.Models.Books", "Book")
+                    .WithMany("Sales")
+                    .HasForeignKey("BookId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("Book");
-                });
+                b.Navigation("Book");
+            });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Authors", b =>
-                {
-                    b.Navigation("Books");
-                });
+            {
+                b.Navigation("Books");
+            });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Books", b =>
-                {
-                    b.Navigation("Receipts");
+            {
+                b.Navigation("Receipts");
 
-                    b.Navigation("Reservations");
+                b.Navigation("Reservations");
 
-                    b.Navigation("Sales");
-                });
+                b.Navigation("Sales");
+            });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Genres", b =>
-                {
-                    b.Navigation("Books");
-                });
+            {
+                b.Navigation("Books");
+            });
 #pragma warning restore 612, 618
         }
     }
