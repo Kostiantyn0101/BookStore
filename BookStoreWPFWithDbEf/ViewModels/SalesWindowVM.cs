@@ -11,38 +11,38 @@ using System.Windows.Input;
 
 namespace BookStoreWPFWithDbEf.ViewModels
 {
-    public class ReceiptsWindowVM : NotifyPropertyChangedBase
+    public class SalesWindowVM : NotifyPropertyChangedBase
     {
         private readonly BookStoreContext context;
 
-        public ReceiptsWindowVM(BookStoreContext Сontext)
+        public SalesWindowVM(BookStoreContext Сontext)
         {
             context = Сontext;
             Load();
         }
         private void Load()
         {
-            allReceipts = context.ReceiptBook.ToList();
-            OnPropertyChanged(nameof(Receipts));
+            allSales = context.SaleBook.ToList();
+            OnPropertyChanged(nameof(Sales));
             allBooks = context.Books.ToList();
             OnPropertyChanged(nameof(Books));
         }
-        private List<ReceiptBook> allReceipts = new List<ReceiptBook>();
+        private List<SaleBook> allSales = new List<SaleBook>();
 
-        public ObservableCollection<ReceiptVM> Receipts
+        public ObservableCollection<SaleVM> Sales
         {
-            get => new(allReceipts.Select(x => new ReceiptVM(x)));
+            get => new(allSales.Select(x => new SaleVM(x)));
         }
-        private ReceiptVM selectedReceipt;
-        public ReceiptVM SelectedReceipt
+        private SaleVM selectedSale;
+        public SaleVM SelectedSale
         {
-            get => selectedReceipt;
+            get => selectedSale;
             set
             {
-                if (value != selectedReceipt)
+                if (value != selectedSale)
                 {
-                    selectedReceipt = value;
-                    OnPropertyChanged(nameof(SelectedReceipt));
+                    selectedSale = value;
+                    OnPropertyChanged(nameof(SelectedSale));
                 }
             }
         }
@@ -54,21 +54,21 @@ namespace BookStoreWPFWithDbEf.ViewModels
         }
         public ICommand AddNewCommand => new RelayCommand(x =>
         {
-            var model = new ReceiptBook() { };
+            var model = new SaleBook() { };
             model.Book = allBooks.FirstOrDefault();
             model.Time = DateTime.Now;
             context.Add(model);
-            allReceipts.Add(model);
-            OnPropertyChanged(nameof(Receipts));
-            OnPropertyChanged(nameof(SelectedReceipt));
+            allSales.Add(model);
+            OnPropertyChanged(nameof(Sales));
+            OnPropertyChanged(nameof(SelectedSale));
         });
         public ICommand DeleteCommand => new RelayCommand(x =>
         {
-            if (SelectedReceipt != null)
+            if (SelectedSale != null)
             {
-                context.ReceiptBook.Remove(SelectedReceipt.Model);
-                allReceipts.Remove(SelectedReceipt.Model);
-                OnPropertyChanged(nameof(Receipts));
+                context.SaleBook.Remove(SelectedSale.Model);
+                allSales.Remove(SelectedSale.Model);
+                OnPropertyChanged(nameof(Sales));
             }
         });
         public ICommand SaveCommand => new RelayCommand(x =>

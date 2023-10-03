@@ -46,7 +46,7 @@ namespace BookStoreWPFWithDbEf.ViewModels
             {
                 selectedGenre = new GenresVM(Model.Genres);
             }
-            else 
+            else
             {
                 selectedGenre = new GenresVM(allGenres.FirstOrDefault());
             }

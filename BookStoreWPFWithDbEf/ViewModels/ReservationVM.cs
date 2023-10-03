@@ -65,5 +65,17 @@ namespace BookStoreWPFWithDbEf.ViewModels
                 }
             }
         }
+        public CustomersVM Customer
+        {
+            get => new CustomersVM(Model.Customer);
+            set
+            {
+                if (Model.Customer != value.Model)
+                {
+                    Model.Customer = value.Model;
+                    OnPropertyChanged(nameof(Customer));
+                }
+            }
+        }
     }
 }

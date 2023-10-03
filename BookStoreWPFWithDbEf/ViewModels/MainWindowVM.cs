@@ -59,12 +59,12 @@ namespace BookStoreWPFWithDbEf.ViewModels
             get => new(allGenres.Select(x => new GenresVM(x)));
         }
         public ICommand OpenGenresWindowCommand => new RelayCommand(x =>
-            {
-                var window = new GenresWindow();
-                var wm = new GenresWindowVM(context);
-                window.DataContext = wm;
-                window.ShowDialog();
-            });
+        {
+            var window = new GenresWindow();
+            var wm = new GenresWindowVM(context);
+            window.DataContext = wm;
+            window.ShowDialog();
+        });
         #endregion
 
         #region customers
@@ -155,6 +155,17 @@ namespace BookStoreWPFWithDbEf.ViewModels
             window.ShowDialog();
         });
         #endregion
+
+        #region sales
+        public ICommand OpenSalesWindowCommand => new RelayCommand(x =>
+        {
+            var window = new SalesWindow();
+            var wm = new SalesWindowVM(context);
+            window.DataContext = wm;
+            window.ShowDialog();
+        });
+        #endregion
+
 
         public ICommand SaveCommand => new RelayCommand(x =>
         {
