@@ -17,7 +17,7 @@ namespace BookStoreWPFWithDbEf.Models
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-       => optionsBuilder.UseSqlServer("Data Source=LAPTOP-UVAUHJMP\\SQLEXPRESS;Initial Catalog=BookStore;" +
+       => optionsBuilder.UseSqlServer("Data Source=LAPTOP-UVAUHJMP\\SQLEXPRESS;Initial Catalog=StoreBook;" +
            "Integrated Security=True;Persist Security Info=False;Pooling=False;Multiple Active Result Sets=False;" +
            "Connect Timeout=60;Encrypt=False;Trust Server Certificate=False");
 

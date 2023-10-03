@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BookStoreWPFWithDbEf.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateTables : Migration
+    public partial class createtabels : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,7 @@ namespace BookStoreWPFWithDbEf.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FullName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    FullName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,9 +33,9 @@ namespace BookStoreWPFWithDbEf.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Login = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Login = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     IsAdmin = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -62,8 +62,8 @@ namespace BookStoreWPFWithDbEf.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Publisher = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Publisher = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     TotalPages = table.Column<int>(type: "int", nullable: false),
                     Year = table.Column<int>(type: "int", nullable: false),
                     SalePrice = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
@@ -148,7 +148,8 @@ namespace BookStoreWPFWithDbEf.Migrations
                     BookId = table.Column<int>(type: "int", nullable: false),
                     Time = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Count = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,4)", nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
+                    CustomerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -157,6 +158,12 @@ namespace BookStoreWPFWithDbEf.Migrations
                         name: "FK_Reservation_Books_BookId",
                         column: x => x.BookId,
                         principalTable: "Books",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Reservation_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -214,6 +221,11 @@ namespace BookStoreWPFWithDbEf.Migrations
                 column: "BookId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Reservation_CustomerId",
+                table: "Reservation",
+                column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SaleBook_BookId",
                 table: "SaleBook",
                 column: "BookId");
@@ -222,9 +234,6 @@ namespace BookStoreWPFWithDbEf.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Customers");
-
             migrationBuilder.DropTable(
                 name: "Promotions");
 
@@ -236,6 +245,9 @@ namespace BookStoreWPFWithDbEf.Migrations
 
             migrationBuilder.DropTable(
                 name: "SaleBook");
+
+            migrationBuilder.DropTable(
+                name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "Books");

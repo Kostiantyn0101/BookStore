@@ -15,7 +15,7 @@
             <MenuItem  Header="File">
                 <MenuItem Header="Exit" />
             </MenuItem>
-            <MenuItem Header="Sale" />
+            <MenuItem Header="Sale" Command="{Binding OpenSalesWindowCommand}" />
             <MenuItem Header="Receipt" Command="{Binding OpenReceiptsWindowCommand}" />
             <MenuItem Header="Reservation" />
             <MenuItem Header="Promotions" />

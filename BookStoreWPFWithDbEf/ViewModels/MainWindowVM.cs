@@ -156,6 +156,17 @@ namespace BookStoreWPFWithDbEf.ViewModels
         });
         #endregion
 
+        #region sales
+        public ICommand OpenSalesWindowCommand => new RelayCommand(x =>
+        {
+            var window = new SalesWindow();
+            var wm = new SalesWindowVM(context);
+            window.DataContext = wm;
+            window.ShowDialog();
+        });
+        #endregion
+
+
         public ICommand SaveCommand => new RelayCommand(x =>
         {
             try

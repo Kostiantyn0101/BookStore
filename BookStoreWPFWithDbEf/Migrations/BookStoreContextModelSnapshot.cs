@@ -37,7 +37,7 @@ namespace BookStoreWPFWithDbEf.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors");
+                    b.ToTable("Authors", (string)null);
                 });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Books", b =>
@@ -90,7 +90,7 @@ namespace BookStoreWPFWithDbEf.Migrations
 
                     b.HasIndex("GenresId");
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Customers", b =>
@@ -136,7 +136,7 @@ namespace BookStoreWPFWithDbEf.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Genres", b =>
@@ -154,7 +154,7 @@ namespace BookStoreWPFWithDbEf.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genres");
+                    b.ToTable("Genres", (string)null);
                 });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Promotions", b =>
@@ -181,7 +181,7 @@ namespace BookStoreWPFWithDbEf.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("Promotions");
+                    b.ToTable("Promotions", (string)null);
                 });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.ReceiptBook", b =>
@@ -208,7 +208,7 @@ namespace BookStoreWPFWithDbEf.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("ReceiptBook");
+                    b.ToTable("ReceiptBook", (string)null);
                 });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Reservation", b =>
@@ -225,6 +225,9 @@ namespace BookStoreWPFWithDbEf.Migrations
                     b.Property<int>("Count")
                         .HasColumnType("int");
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,4)");
 
@@ -235,7 +238,9 @@ namespace BookStoreWPFWithDbEf.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("Reservation");
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("Reservation", (string)null);
                 });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.SaleBook", b =>
@@ -262,7 +267,7 @@ namespace BookStoreWPFWithDbEf.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("SaleBook");
+                    b.ToTable("SaleBook", (string)null);
                 });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.Books", b =>
@@ -320,7 +325,15 @@ namespace BookStoreWPFWithDbEf.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("BookStoreWPFWithDbEf.Models.Customers", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Book");
+
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("BookStoreWPFWithDbEf.Models.SaleBook", b =>
