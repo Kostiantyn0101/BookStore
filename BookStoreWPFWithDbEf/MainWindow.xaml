@@ -31,6 +31,7 @@
                 <MenuItem Header="Customers" Command="{Binding OpenCustomersWindowCommand}" />
                 <MenuItem Header="Genres" Command="{Binding OpenGenresWindowCommand}" />
             </MenuItem>
+            <MenuItem Header="Statistic" Command="{Binding OpenStatisticWindowCommand}" />
         </Menu>
         <TabControl Grid.Row="1">
             <TabItem Header="Books">
@@ -104,32 +105,6 @@
                         <DataGrid Margin="5" AutoGenerateColumns="False" IsReadOnly="True"
                                   ItemsSource="{Binding Path=FoundBooks}" 
                                   SelectedItem="{Binding Path=SelectedBook}">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" />
-                                <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}" />
-                                <DataGridTextColumn Header="Publisher" Binding="{Binding Path=Publisher}" />
-                                <DataGridTextColumn Header="Pages" Binding="{Binding Path=TotalPages}" />
-                                <DataGridTextColumn Header="Year" Binding="{Binding Path=Year}" />
-                                <DataGridTextColumn Header="CostPrice" Binding="{Binding Path=CostPrice}" />
-                                <DataGridTextColumn Header="SalePrice" Binding="{Binding Path=SalePrice}" />
-                                <DataGridTextColumn Header="Authors" Binding="{Binding Path=Authors.FullName}" />
-                                <DataGridTextColumn Header="Genres" Binding="{Binding Path=Genres.Title}" />
-                                <DataGridTextColumn Header="Continuation Of Book" Binding="{Binding Path=ContinuationOfBook.Title}" />
-                                <DataGridTextColumn Header="New" Binding="{Binding Path=IsNew}" />
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </Grid>
-                </Grid>
-            </TabItem>
-            <TabItem Header="New Books">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="1">
-                        <DataGrid Margin="5" AutoGenerateColumns="False" IsReadOnly="True"
-                      ItemsSource="{Binding Path=GetNewBooks}" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" />
                                 <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}" />

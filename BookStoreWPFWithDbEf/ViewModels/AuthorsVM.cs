@@ -28,6 +28,21 @@ namespace BookStoreWPFWithDbEf.ViewModels
                 }
             }
         }
+        private int bookCount;
+
+        public int BookCount
+        {
+            get { return bookCount; }
+            set
+            {
+                if (bookCount != value)
+                {
+                    bookCount = value;
+                    OnPropertyChanged(nameof(BookCount));
+                }
+            }
+        }
+
         public override bool Equals(object? obj)
         {
             if (obj == null) return false;

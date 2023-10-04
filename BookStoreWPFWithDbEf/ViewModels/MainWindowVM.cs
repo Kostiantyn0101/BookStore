@@ -266,13 +266,15 @@ namespace BookStoreWPFWithDbEf.ViewModels
 
         #endregion
 
-        #region Linq
-
-        public List<Books> GetNewBooks
+        #region Statistic
+        public ICommand OpenStatisticWindowCommand => new RelayCommand(x =>
         {
-            get => context.Books.Where(book => book.IsNew == true).ToList();
-        }
-
+            var window = new StatisticWindow();
+            var wm = new StatisticWindowVM(context);
+            window.DataContext = wm;
+            window.ShowDialog();
+        });
+        
         #endregion
 
         public ICommand SaveCommand => new RelayCommand(x =>

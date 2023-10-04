@@ -1,0 +1,126 @@
+﻿<Window x:Class="BookStoreWPFWithDbEf.Windows.StatisticWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookStoreWPFWithDbEf.Windows"
+        mc:Ignorable="d"
+        Title="Statistic" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="New Books">
+                <Grid>
+                    <DataGrid Margin="5" AutoGenerateColumns="False" IsReadOnly="True"
+                                ItemsSource="{Binding Path=GetNewBooks}" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" />
+                            <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}" />
+                            <DataGridTextColumn Header="Publisher" Binding="{Binding Path=Publisher}" />
+                            <DataGridTextColumn Header="Pages" Binding="{Binding Path=TotalPages}" />
+                            <DataGridTextColumn Header="Year" Binding="{Binding Path=Year}" />
+                            <DataGridTextColumn Header="CostPrice" Binding="{Binding Path=CostPrice}" />
+                            <DataGridTextColumn Header="SalePrice" Binding="{Binding Path=SalePrice}" />
+                            <DataGridTextColumn Header="Authors" Binding="{Binding Path=Authors.FullName}" />
+                            <DataGridTextColumn Header="Genres" Binding="{Binding Path=Genres.Title}" />
+                            <DataGridTextColumn Header="Continuation Of Book" Binding="{Binding Path=ContinuationOfBook.Title}" />
+                            <DataGridTextColumn Header="New" Binding="{Binding Path=IsNew}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Books ">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0">
+                        <Button Content="Today" Width="120" Height="28" Margin="4" 
+                                Command="{Binding TodayBookStatisticCommand}" />
+                        <Button Content="Week" Width="120" Height="28" Margin="4" 
+                                Command="{Binding WeekBookStatisticCommand}" />
+                        <Button Content="Month" Width="120" Height="28" Margin="4" 
+                                Command="{Binding MonthBookStatisticCommand}" />
+                        <Button Content="Year" Width="120" Height="28" Margin="4" 
+                                Command="{Binding YearBookStatisticCommand}" />
+                    </StackPanel>
+                    <Grid Grid.Row="1">
+                        <DataGrid Margin="5" AutoGenerateColumns="False" IsReadOnly="True"
+                                ItemsSource="{Binding Path=StatisticBookList}" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" />
+                                <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}" />
+                                <DataGridTextColumn Header="Publisher" Binding="{Binding Path=Publisher}" />
+                                <DataGridTextColumn Header="Pages" Binding="{Binding Path=TotalPages}" />
+                                <DataGridTextColumn Header="Year" Binding="{Binding Path=Year}" />
+                                <DataGridTextColumn Header="CostPrice" Binding="{Binding Path=CostPrice}" />
+                                <DataGridTextColumn Header="SalePrice" Binding="{Binding Path=SalePrice}" />
+                                <DataGridTextColumn Header="Authors" Binding="{Binding Path=Authors.FullName}" />
+                                <DataGridTextColumn Header="Genres" Binding="{Binding Path=Genres.Title}" />
+                                <DataGridTextColumn Header="Continuation Of Book" Binding="{Binding Path=ContinuationOfBook.Title}" />
+                                <DataGridTextColumn Header="New" Binding="{Binding Path=IsNew}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Authors ">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0">
+                        <Button Content="Today" Width="120" Height="28" Margin="4" 
+                                Command="{Binding TodayAuthorStatisticCommand}" />
+                        <Button Content="Week" Width="120" Height="28" Margin="4" 
+                                Command="{Binding WeekAuthorStatisticCommand}" />
+                        <Button Content="Month" Width="120" Height="28" Margin="4" 
+                                Command="{Binding MonthAuthorStatisticCommand}" />
+                        <Button Content="Year" Width="120" Height="28" Margin="4" 
+                                Command="{Binding YearAuthorStatisticCommand}" />
+                    </StackPanel>
+                    <Grid Grid.Row="1">
+                        <DataGrid Margin="5" AutoGenerateColumns="False" IsReadOnly="True"
+                                ItemsSource="{Binding Path=StatisticAuthorList}" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" />
+                                <DataGridTextColumn Header="Full Name" Binding="{Binding Path=FullName}" />
+                                <DataGridTextColumn Header="Count books" Binding="{Binding Path=BookCount}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Genres ">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0">
+                        <Button Content="Today" Width="120" Height="28" Margin="4" 
+                                Command="{Binding TodayGenreStatisticCommand}" />
+                        <Button Content="Week" Width="120" Height="28" Margin="4" 
+                                Command="{Binding WeekGenreStatisticCommand}" />
+                        <Button Content="Month" Width="120" Height="28" Margin="4" 
+                                Command="{Binding MonthGenreStatisticCommand}" />
+                        <Button Content="Year" Width="120" Height="28" Margin="4" 
+                                Command="{Binding YearGenreStatisticCommand}" />
+                    </StackPanel>
+                    <Grid Grid.Row="1">
+                        <DataGrid Margin="5" AutoGenerateColumns="False" IsReadOnly="True"
+                                ItemsSource="{Binding Path=StatisticGenreList}" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" />
+                                <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}" />
+                                <DataGridTextColumn Header="Count books" Binding="{Binding Path=BookCount}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</Window>
