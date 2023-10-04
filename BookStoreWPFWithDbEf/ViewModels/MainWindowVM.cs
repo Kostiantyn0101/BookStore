@@ -196,6 +196,76 @@ namespace BookStoreWPFWithDbEf.ViewModels
         });
         #endregion
 
+        #region FoundBook
+
+        private ObservableCollection<BooksVM> foundBooks = new ObservableCollection<BooksVM>();
+        public ObservableCollection<BooksVM> FoundBooks
+        {
+            get { return foundBooks; }
+            set
+            {
+                if (foundBooks != value)
+                {
+                    foundBooks = value;
+                    OnPropertyChanged(nameof(FoundBooks));
+                }
+            }
+        }
+        private string bookTitle = string.Empty;
+        public string BookTitle
+        {
+            get => bookTitle;
+            set
+            {
+                if (bookTitle != value)
+                {
+                    bookTitle = value;
+                    OnPropertyChanged(nameof(BookTitle));
+                }
+            }
+        }
+
+        private Authors selectedAuthor;
+        public AuthorsVM SelectedAuthor
+        {
+            get => new AuthorsVM(selectedAuthor);
+            set
+            {
+                if (selectedAuthor != value.Model)
+                {
+                    selectedAuthor = value.Model;
+                    OnPropertyChanged(nameof(SelectedAuthor));
+                }
+            }
+        }
+        private Genres selectedGenre;
+        public GenresVM SelectedGenre
+        {
+            get => new GenresVM(selectedGenre);
+            set
+            {
+                if (selectedGenre != value.Model)
+                {
+                    selectedGenre = value.Model;
+                    OnPropertyChanged(nameof(SelectedGenre));
+                }
+            }
+        }
+
+        public ICommand SearchBookCommand => new RelayCommand(x =>
+        {
+            var searchBooks = Books.Where(book =>
+                            (selectedAuthor == null || selectedAuthor.FullName == "All" || selectedAuthor.FullName == book.Authors.FullName) &&
+                            (selectedGenre == null || selectedGenre.Title == "All" || selectedGenre.Title == book.Genres.Title) &&
+                            (string.IsNullOrEmpty(BookTitle) || book.Title.Contains(BookTitle))
+                        ).ToList();
+
+            FoundBooks = new ObservableCollection<BooksVM>(searchBooks);
+        });
+
+
+        #endregion
+
         public ICommand SaveCommand => new RelayCommand(x =>
         {
             try
