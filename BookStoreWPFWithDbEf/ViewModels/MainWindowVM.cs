@@ -266,6 +266,15 @@ namespace BookStoreWPFWithDbEf.ViewModels
 
         #endregion
 
+        #region Linq
+
+        public List<Books> GetNewBooks
+        {
+            get => context.Books.Where(book => book.IsNew == true).ToList();
+        }
+
+        #endregion
+
         public ICommand SaveCommand => new RelayCommand(x =>
         {
             try

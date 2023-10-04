@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookStoreWPFWithDbEf"
         mc:Ignorable="d"
-        Title="Book Store" Height="450" Width="800">
+        Title="Book Store" Height="450" Width="850">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -39,7 +39,6 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    
                     <Grid Grid.Row="1">
                         <DataGrid Margin="5" AutoGenerateColumns="False" IsReadOnly="True"
                                   ItemsSource="{Binding Path=Books}" 
@@ -61,7 +60,7 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Search Book">
+            <TabItem Header="Search Books">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -122,7 +121,32 @@
                     </Grid>
                 </Grid>
             </TabItem>
-
+            <TabItem Header="New Books">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1">
+                        <DataGrid Margin="5" AutoGenerateColumns="False" IsReadOnly="True"
+                      ItemsSource="{Binding Path=GetNewBooks}" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" />
+                                <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}" />
+                                <DataGridTextColumn Header="Publisher" Binding="{Binding Path=Publisher}" />
+                                <DataGridTextColumn Header="Pages" Binding="{Binding Path=TotalPages}" />
+                                <DataGridTextColumn Header="Year" Binding="{Binding Path=Year}" />
+                                <DataGridTextColumn Header="CostPrice" Binding="{Binding Path=CostPrice}" />
+                                <DataGridTextColumn Header="SalePrice" Binding="{Binding Path=SalePrice}" />
+                                <DataGridTextColumn Header="Authors" Binding="{Binding Path=Authors.FullName}" />
+                                <DataGridTextColumn Header="Genres" Binding="{Binding Path=Genres.Title}" />
+                                <DataGridTextColumn Header="Continuation Of Book" Binding="{Binding Path=ContinuationOfBook.Title}" />
+                                <DataGridTextColumn Header="New" Binding="{Binding Path=IsNew}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
